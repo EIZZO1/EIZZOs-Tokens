@@ -1,0 +1,18 @@
+name: EIZZOs-Tokens
+version: ${project.version}
+main: com.eizzo.tokens.EizzoTokens
+api-version: 1.21
+authors: [ Gemini ]
+description: Custom Token Manager with MariaDB support.
+softdepend: [Vault]
+
+commands:
+  tokens:
+    description: Main tokens command
+    aliases: [token]
+    usage: /tokens [help]
+
+permissions:
+  eizzotokens.admin:
+    description: Admin access to manage tokens
+    default: op

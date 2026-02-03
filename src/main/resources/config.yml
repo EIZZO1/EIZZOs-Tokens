@@ -1,0 +1,9 @@
+config-version: 1.1
+database:
+  type: "sqlite" # Options: mariadb, sqlite
+  host: "192.168.20.227"
+  port: 3306
+  database: "eizzostokensdb"
+  username: "eizzostokens"
+  password: "150703eizzostokens699430"
+  pool-size: 10
