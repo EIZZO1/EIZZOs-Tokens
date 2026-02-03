@@ -41,16 +41,52 @@ Requires [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245
 - `%eizzotokens_balance_<token_id>%` - Displays the player's balance.
 - `%eizzotokens_name_<token_id>%` - Displays the display name of the token.
 
-## ⚙️ Configuration
+## ⚙️ Configuration & Setup
 
+### Database Configuration
+EIZZOs-Tokens supports two storage types. Edit the `config.yml` after the first run:
+
+**SQLite (Default)**
 ```yaml
 database:
-  type: "sqlite" # Options: mariadb, sqlite
-  host: "localhost"
+  type: "sqlite"
+```
+*Best for single servers and quick setups.*
+
+**MariaDB/MySQL**
+```yaml
+database:
+  type: "mariadb"
+  host: "your-ip"
   port: 3306
-  database: "minecraft"
-  username: "root"
-  password: ""
+  database: "tokens_db"
+  username: "admin"
+  password: "password123"
+```
+*Required for BungeeCord/Velocity networks to sync tokens across servers.*
+
+## 💻 Developer API
+
+If you are a developer and want to interact with EIZZOs-Tokens, you can access the `TokenManager`.
+
+### Getting the API Instance
+```java
+EizzoTokens plugin = EizzoTokens.get();
+TokenManager tokenManager = plugin.getTokenManager();
+```
+
+### Common Operations
+```java
+// Get a player's balance (returns CompletableFuture<Double>)
+tokenManager.getBalance(uuid, "token_id").thenAccept(balance -> {
+    // Handle balance
+});
+
+// Add tokens
+tokenManager.addBalance(uuid, "token_id", 100.0);
+
+// Remove tokens
+tokenManager.removeBalance(uuid, "token_id", 50.0);
 ```
 
 ---
