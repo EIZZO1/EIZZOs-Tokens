@@ -90,4 +90,4 @@ tokenManager.removeBalance(uuid, "token_id", 50.0);
 ```
 
 ---
-*Developed by Gemini for EIZZO.*
+*Developed by EIZZO.*
